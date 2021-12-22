@@ -1,12 +1,12 @@
 {
-	"name": "betterfountain",
-	"displayName": "Better Fountain",
-	"description": "Fountain autocomplete, syntax highlighting, and export to PDF",
-	"author": "Piers Deseilligny",
+	"name": "betterfountain-indic",
+	"displayName": "Better Fountain-Indic",
+	"description": "Fountain autocomplete, syntax highlighting, and export to PDF; modifications for Indic Languages. Signficant deviations from standard screenplay script output",
+	"author": "Piers Deseilligny (mod by Sivaraj D)",
 	"license": "MIT",
-	"aiKey": "0c2689ab-4ce9-416d-a585-c9765b7f4c88",
+	"aiKey": "7b53b02c-c1e1-4379-8026-ccfe51b79a02",
 	"icon": "icon.png",
-	"version": "1.8.11",
+	"version": "1.8.11-m1",
 	"capabilities": {
 		"untrustedWorkspaces": {
 			"supported": true
@@ -14,12 +14,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/piersdeseilligny/betterfountain"
+		"url": "https://github.com/sivarajd/betterfountain"
 	},
 	"bugs": {
-		"url": "https://github.com/piersdeseilligny/betterfountain/issues"
+		"url": "https://github.com/sivarajd/betterfountain/issues"
 	},
-	"publisher": "piersdeseilligny",
+	"publisher": "sivarajd",
 	"categories": [
 		"Programming Languages",
 		"Other"
