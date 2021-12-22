@@ -1,4 +1,27 @@
+**NOTE on Indic Modifications to Better Fountain:**
 
+Standard fountain markup works pretty well for Indian languages. However, as the glyphs are always of variable width, the fonts and alignments do not work out of the box. Besides the standard output format requires minor changes to address local sensibilities. This fork tries to do minimal changes to the fountain markup and Better Fountain to get it working for Indian languages.
+
+As most of these changes won't be applicable for Better Fountain main tree, I am not planning to send a pull request. Let me know if it is worth generalising.
+
+Changes in this initial version:
+
+* Font size changes for title, scene heading; new *Subtitle* tag.
+* Move title to the left instead of center
+* Display scene number in the outline
+* Parameter adjustments in print.js
+* Add `p` in front of page number instead of `.` after
+* Underline the character names
+* Minor line height alingments.
+
+To use this version:
+* Clone the repository
+* Open the folder in Visual Studio Code
+* Run `npm install`
+* On the debug window click `Run Extension` 
+* You will need `node` to get it running
+
+_Original README follows:_
 
 <img align="left" width="200" src="https://piersdeseilligny.com/assets/small_Logo5_c9ca125c1a.png">
 
