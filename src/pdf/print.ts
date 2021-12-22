@@ -13,6 +13,7 @@ export class PrintProfile{
     page_number_top_margin:number;
     dual_max_factor:number;
     title_page:{
+        feed:number;
         top_start:number;
         left_side:string[];
         right_side:string[];
@@ -37,29 +38,30 @@ var A4_DEFAULT_MAX = 58,
     export var print_profiles:{ [key: string]: PrintProfile } = {
         "a4": {
             paper_size: "a4",
-            font_size: 12,
-            lines_per_page: 57,
+            font_size: 16,
+            lines_per_page: 45,
             top_margin: 1.0,
             page_width: 8.27,
             page_height: 11.7,
-            left_margin: 1.5,
+            left_margin: 1,
             right_margin: 1,
-            font_width: 0.1,
-            font_height: 0.1667,
-            line_spacing: 1,
+            font_width: 0.11,
+            font_height: 0.2,
+            line_spacing: 1.5,
             page_number_top_margin: 0.5,
             dual_max_factor: 0.75,
             title_page: {
+                feed: 1,
                 top_start: 3.5,
                 left_side: ['notes', 'copyright'],
                 right_side: ['draft_date', 'date', 'contact', 'contact_info', 'revision']
             },
             scene_heading: {
-                feed: 1.5,
+                feed: 1,
                 max: A4_DEFAULT_MAX
             },
             action: {
-                feed: 1.5,
+                feed: 1,
                 max: A4_DEFAULT_MAX
             },
             shot: {
@@ -67,7 +69,7 @@ var A4_DEFAULT_MAX = 58,
                 max: A4_DEFAULT_MAX
             },
             character: {
-                feed: 3.5,
+                feed: 3,
                 max: 33
             },
             more: {
@@ -107,7 +109,7 @@ var A4_DEFAULT_MAX = 58,
             },
             note: {
                 color: '#888888',
-                italic: true
+                italic: false
             }
         }
     }

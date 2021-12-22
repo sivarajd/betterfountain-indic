@@ -155,7 +155,7 @@ class SectionTreeItem extends OutlineTreeItem {
 
 class SceneTreeItem extends OutlineTreeItem {
 	constructor(token: afterparser.StructToken, parent: OutlineTreeItem) {
-		super(token.text, token.id, parent)
+		super(token.text+"["+token.number+"]", token.id, parent)
 
 		this.iconPath = __filename + '/../../../assets/scene.svg';
 		if (token.synopses && token.synopses.length > 0) {

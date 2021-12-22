@@ -214,10 +214,16 @@ import * as he from 'he';
                     if (elem === '\\_' || elem === '\\*') {
                         elem = elem.substr(1, 1);
                     }
+                    if (doc.format_state.bold && doc.format_state.underline) {
+                        doc.fontSize(24);
+                    }
                     inner_text.call(doc, elem, x * 72, y * 72, {
                         underline: doc.format_state.underline,
                         lineBreak: options.line_break
                     });
+                    if (doc.format_state.bold && doc.format_state.underline) {
+                        doc.fontSize(print.font_size || 24);
+                    }
                     x += font_width * elem.length;
                 }
             }
@@ -279,6 +285,13 @@ import * as he from 'he';
             doc.text(txt, feed, y);
         };
 
+        var titlepage_center = function (txt:string, y:number) {
+            var txt_length = txt.replace(/\*/g, '').replace(/_/g, '').length;
+            var feed = (print.page_width - txt_length * print.font_width) / 2;
+        	feed = print.title_page.feed;
+            doc.text(txt, feed, y);
+        };
+
         var title_y = print.title_page.top_start;
 
         var title_page_next_line = function() {
@@ -297,7 +310,10 @@ import * as he from 'he';
                     if (options.capitalize) {
                         line = line.toUpperCase();
                     }
-                    center(line, title_y);
+                    if (options.add_gap) {
+                        title_y += 0.2;
+                    }
+                    titlepage_center(line,title_y);
                     title_page_next_line();
                 });
             }
@@ -306,9 +322,16 @@ import * as he from 'he';
         if (cfg.print_title_page) {
 
             // title page
+            doc.fontSize(32);
             title_page_main(parsed, 'title', {
-                capitalize: true
+                capitalize: true                
             });
+            doc.fontSize(24);
+            title_page_main(parsed, 'subtitle', {
+                capitalize: true,
+                add_gap: true
+            });
+            doc.fontSize(print.font_size || 12);
             title_page_main();
             title_page_main();
             title_page_main(parsed, 'credit');
@@ -406,7 +429,7 @@ import * as he from 'he';
                 diagonal = Math.sqrt(Math.pow(print.page_width, 2) + Math.pow(print.page_height, 2));
                 diagonal -= 4;
 
-                font_size = (1.667 * diagonal) / len * 72;
+                font_size = (1.667 * diagonal * 1.3) / len * 72;
                 doc.fontSize(font_size);
                 doc.rotate(angle, options);
                 doc.format_text(watermark, 2, -(font_size / 2) / 72, {
@@ -480,7 +503,7 @@ import * as he from 'he';
                 }
 
                 if (cfg.show_page_numbers) {
-                    var page_num = page.toFixed() + ".";
+                    var page_num = "p" + page.toFixed();
                     var number_x = print.action.feed + print.action.max * print.font_width - page_num.length * print.font_width;
                     doc.simple_text(page_num, number_x * 72, number_y * 72);
                 }
@@ -526,7 +549,9 @@ import * as he from 'he';
                 if(line.type == "parenthetical" && !text.startsWith("(")){
                     text = " " + text;
                 }
-
+                if(line.type == "character" && !text.startsWith("(")){
+                    text = "_" + text + "_";
+                }
                 if (line.type === 'centered') {
                     center(text, print.top_margin + print.font_height * y++);
                 } else {
@@ -617,7 +642,9 @@ import * as he from 'he';
                         }
                         feed -= (feed - print.left_margin) / 2;
                     }
-
+                    if (line.type === "scene_heading") {
+                        doc.fontSize(18);
+                    }
                     doc.text(text, feed, print.top_margin + print.font_height * y, text_properties);
                     if(line.linediff){
                         y +=  line.linediff;
@@ -645,6 +672,11 @@ import * as he from 'he';
                             doc.text(scene_number, feed + shift_scene_number, print.top_margin + print.font_height * y, text_properties);
                         }
                     }
+                    if (line.type === "scene_heading") {
+                        doc.fontSize(print.font_size || 12);
+                        y += 0.1;
+                    }
+                    y += 0.1;
                     y++;
                 }
                 if(lineStructs){
