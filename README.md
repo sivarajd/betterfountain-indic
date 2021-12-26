@@ -14,12 +14,17 @@ Changes in this initial version:
 * Underline the character names
 * Minor line height alingments.
 
-To use this version:
+To develop this version:
 * Clone the repository
 * Open the folder in Visual Studio Code
 * Run `npm install`
 * On the debug window click `Run Extension` 
 * You will need `node` to get it running
+
+To run this version:
+* Download the vsix package file.
+* Run the following to install the package.
+`$ code -install-extension betterfountain-indic-1.8.11-m1.vsix`
 
 _Original README follows:_
 

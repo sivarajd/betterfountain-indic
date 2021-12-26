@@ -14,10 +14,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/sivarajd/betterfountain"
+		"url": "https://github.com/sivarajd/betterfountain-indic"
 	},
 	"bugs": {
-		"url": "https://github.com/sivarajd/betterfountain/issues"
+		"url": "https://github.com/sivarajd/betterfountain-indic/issues"
 	},
 	"publisher": "sivarajd",
 	"categories": [
@@ -28,7 +28,9 @@
 		"screenwriting",
 		"fountain",
 		"screenplay",
-		"pdf"
+		"pdf",
+		"indic",
+		"tamil"
 	],
 	"engines": {
 		"vscode": "^1.37.0"
